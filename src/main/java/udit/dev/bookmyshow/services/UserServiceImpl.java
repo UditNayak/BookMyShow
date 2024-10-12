@@ -1,6 +1,7 @@
 package udit.dev.bookmyshow.services;
 
 import org.springframework.stereotype.Service;
+import udit.dev.bookmyshow.dtos.ResponseStatus;
 import udit.dev.bookmyshow.models.User;
 import udit.dev.bookmyshow.repositories.UserRepository;
 
@@ -35,5 +36,26 @@ public class UserServiceImpl implements UserService {
         user.setPassword(password);
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public ResponseStatus login(String email, String password) {
+        //First Check if User with the given email is present in the DB or not.
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        if(optionalUser.isEmpty()) {
+            // redirect to signup page
+        }
+
+        User user = optionalUser.get();
+
+        //Check if the password provided by the user is correct or not.
+        if(user.getPassword().equals(password)) {
+            // Login Successful
+            return ResponseStatus.SUCCESS;
+        }
+
+        // Login Failed
+        return ResponseStatus.FAILURE;
     }
 }

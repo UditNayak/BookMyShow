@@ -1,12 +1,8 @@
 package udit.dev.bookmyshow.controllers;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import udit.dev.bookmyshow.dtos.*;
 import udit.dev.bookmyshow.dtos.ResponseStatus;
-import udit.dev.bookmyshow.dtos.SignUpRequestDto;
-import udit.dev.bookmyshow.dtos.SignUpResponseDto;
 import udit.dev.bookmyshow.models.User;
 import udit.dev.bookmyshow.services.UserService;
 
@@ -35,5 +31,19 @@ public class UserController {
         signUpResponseDto.setResponseStatus(ResponseStatus.SUCCESS);
 
         return signUpResponseDto;
+    }
+
+    //http://localhost:8080/users/login
+    @GetMapping("/login")
+    public LogInResponseDto login(@RequestBody LogInRequestDto logInRequestDto){
+        ResponseStatus responseStatus = userService.login(
+                logInRequestDto.getEmail(),
+                logInRequestDto.getPassword()
+        );
+
+        LogInResponseDto logInResponseDto = new LogInResponseDto();
+        logInResponseDto.setResponseStatus(responseStatus);
+
+        return logInResponseDto;
     }
 }
