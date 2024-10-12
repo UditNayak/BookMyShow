@@ -34,7 +34,7 @@
 <br>
 `@ElementCollection`: This states that the attribute is a collection of non-primitive Attributes.
 
-##### When i include `@ElementCollection` in it gives me an error?
+##### When I include `@ElementCollection` in it gives me an error?
 ```java
     @OneToMany
 //    @ElementCollection
@@ -45,10 +45,10 @@
 - Hibernate will create the table in the database not JPA.
 - We are using JPA, JPA is internally using JDBC, and JDBC is internally using Hibernate.
 - Hibernate is the one who is creating the table in the database.
-- Hibernate is the labours who is actually doing the work.
+- Hibernate is the labour who is actually doing the work.
 - JPA is kind of contractor who is getting the work done by the labours.
 
-`@RestController`: This annotation allows us to create a RESTful web service.
+`@RestController`: This annotation allows us to create a RESTFul web service.
 <br>
 - `@RequestMapping("/users")`: This annotation is used to map the web requests onto specific handler classes and/or handler methods.
 <br>
@@ -66,9 +66,9 @@
 - It helps in Dependency Injection.
 
 `@Repository`: This annotation is used to mark the class as a Data Access Object.
-- Generally we creates an interface which extends  the JpaRepository.
+- Generally we create an interface which extends  the JpaRepository.
 - `JpaRepository<Table_name, Datatype_of_the_primary_key_of_that_table>`
-- Ideally one repository interface should be for one table. It is not a good pratice that one repository interface is talking to multiple tables.
+- Ideally one repository interface should be for one table. It is not a good practice that one repository interface is talking to multiple tables.
 
 ##### Benefits of using a JPA Repository
 - JPA Repository automatically provides us a lot of methods.
@@ -83,3 +83,17 @@
 - We do not want to expose our domain objects to the outside world.
 - We want to expose only the required fields to the outside world.
 - That's why we create dummy objects called DTOs.
+
+`@EnableJpaAuditing`: Asking my Spring Boot application that you have to audit my JPA part.
+- Whenever I am using JPA, please keep a track of it.
+
+`@EntityListeners(AuditingEntityListener.class)`: Hey baseModel class, if any event happens on these attributes, you have to listen to it(keep a track of it).
+
+`@CreatedDate`: This annotation is used to keep a track of the created date.
+
+`@LastModifiedDate`: This annotation is used to keep a track of the last modified date.
+
+### Steps to automatically add createdAt and lastModifiedAt columns (Auditing attributes).
+1. Enable JPA Auditing on SpringBoot application.
+2. `@EntityListeners(AuditingEntityListener.class)` on BaseModel class.
+3. Use `@CreatedAt`, `@LastModifiedAt` annotation on the respective attributes.
