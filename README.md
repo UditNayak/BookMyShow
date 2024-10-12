@@ -47,3 +47,39 @@
 - Hibernate is the one who is creating the table in the database.
 - Hibernate is the labours who is actually doing the work.
 - JPA is kind of contractor who is getting the work done by the labours.
+
+`@RestController`: This annotation allows us to create a RESTful web service.
+<br>
+- `@RequestMapping("/users")`: This annotation is used to map the web requests onto specific handler classes and/or handler methods.
+<br>
+- `@GetMapping`: This annotation handles the HTTP GET requests.
+<br>
+- `@PostMapping`: This annotation handles the HTTP POST requests.
+  - `@RequestBody`: This annotation binds the HTTP request body to the domain object.
+  <br>
+- `@PutMapping`: This annotation handles the HTTP PUT requests.
+<br>
+- `@DeleteMapping`: This annotation handles the HTTP DELETE requests.
+
+`@Service`: This annotation is used to mark the class as a service provider.
+- It will create a singleton object of the class. So, we can use the same object throughout the application.
+- It helps in Dependency Injection.
+
+`@Repository`: This annotation is used to mark the class as a Data Access Object.
+- Generally we creates an interface which extends  the JpaRepository.
+- `JpaRepository<Table_name, Datatype_of_the_primary_key_of_that_table>`
+- Ideally one repository interface should be for one table. It is not a good pratice that one repository interface is talking to multiple tables.
+
+##### Benefits of using a JPA Repository
+- JPA Repository automatically provides us a lot of methods.
+  - `save()`: This method is used to save the data in the database.
+  - `findById()`: This method is used to get the data by id from the database.
+      - This will automatically convert into this kind of Query: `select * from table_name where id = ?`
+  - `findAllById()`: This method is used to get all the data by id from the database.
+
+`@Autowired`: This annotation is used to auto wire the bean on the setter method.
+
+#### Why we use DTOs?
+- We do not want to expose our domain objects to the outside world.
+- We want to expose only the required fields to the outside world.
+- That's why we create dummy objects called DTOs.
