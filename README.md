@@ -97,3 +97,9 @@
 1. Enable JPA Auditing on SpringBoot application.
 2. `@EntityListeners(AuditingEntityListener.class)` on BaseModel class.
 3. Use `@CreatedAt`, `@LastModifiedAt` annotation on the respective attributes.
+
+#### Why `@RestController` for Users and `@Controller` for Tickets?
+#### `@Component` vs `@Service` vs `@Repository` vs `@Controller` vs `@RestController`
+#### `@Transactional` : Taking Lock in Spring boot
+
+- `@Transactional(isolation = Isolation.SERIALIZABLE)`: All the Queries that you write inside this method will be executed in a lock.
