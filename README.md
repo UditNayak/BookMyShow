@@ -48,7 +48,7 @@
 - Hibernate is the labour who is actually doing the work.
 - JPA is kind of contractor who is getting the work done by the labours.
 
-`@RestController`: This annotation allows us to create a RESTFul web service.
+`@RestController`: This annotation allows us to create a  web service.
 <br>
 - `@RequestMapping("/users")`: This annotation is used to map the web requests onto specific handler classes and/or handler methods.
 <br>
@@ -67,7 +67,7 @@
 
 `@Repository`: This annotation is used to mark the class as a Data Access Object.
 - Generally we create an interface which extends  the JpaRepository.
-- `JpaRepository<Table_name, Datatype_of_the_primary_key_of_that_table>`
+- `JpaRepository<Table_name, DataType_of_the_primary_key_of_that_table>`
 - Ideally one repository interface should be for one table. It is not a good practice that one repository interface is talking to multiple tables.
 
 ##### Benefits of using a JPA Repository
